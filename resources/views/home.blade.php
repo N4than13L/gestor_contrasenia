@@ -15,7 +15,7 @@
                         @endif
 
                         <h3>Gestiona tu contraseña</h3>
-                        <a href="#" class="btn btn-success"><i class="fa-solid fa-plus"></i></a>
+                        <a href="{{ route('apps.view') }}" class="btn btn-info"><i class="fa-solid fa-plus"></i></a>
                         <table class="table">
                             <thead>
                                 <tr>
@@ -23,6 +23,7 @@
                                     <th scope="col">Nombre</th>
                                     <th scope="col">contraseña</th>
                                     <th scope="col">tipo</th>
+                                    <th scope="col">creador</th>
                                     <th scope="col">Accion</th>
                                 </tr>
                             </thead>
@@ -35,7 +36,7 @@
                                                 class="fa-solid fa-hashtag"></i> <i class="fa-solid fa-hashtag"></i></td>
                                         <td scope="row">{{ $apps->type }}</td>
 
-                                        {{-- <td scope="row">{{ $apps->user }}</td> --}}
+                                        <td scope="row">{{ $apps->users_id }}</td>
 
                                         </td>
                                         <td scope="row">

@@ -8,5 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class App extends Model
 {
     use HasFactory;
+
+    protected $table = "apps";
     public $timestamps = false;
+
+    protected $fillable = [
+        'name',
+        'password',
+        'type',
+        'users_id',
+    ];
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UserController;
@@ -26,3 +27,10 @@ Route::get('/settings', [UserController::class, 'settings'])->name('settings');
 
 // actualizar datos de usuario en la db
 Route::post('/update/{id}', [UserController::class, 'update'])->name('update.user');
+
+
+// ver formuario para agregar aplicaciones 
+Route::get('/apps', [AppsController::class, 'apps'])->name('apps.view');
+
+// guardar apps a db.
+Route::post('/save', [AppsController::class, 'save'])->name('save.apps');
