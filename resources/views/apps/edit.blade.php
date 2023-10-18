@@ -5,7 +5,9 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Agregar Aplicacion') }}</div>
+                    <div class="card-header">
+                        <h3>Actualizar aplicación</h3>
+                    </div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('update.apps', ['id' => $app->id]) }}">
