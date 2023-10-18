@@ -8,7 +8,7 @@
                     <div class="card-header">{{ __('Agregar Aplicacion') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('save.apps') }}">
+                        <form method="POST" action="{{ route('update.apps', ['id' => $app->id]) }}">
                             @csrf
 
                             {{-- name --}}
@@ -17,7 +17,7 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Nombre de la app') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text"
+                                    <input id="name" type="text" value="{{ $app->name }}"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
                                         value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -35,7 +35,7 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('Contrasena') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password"
+                                    <input id="password" type="password" value="{{ $app->password }}"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
                                         required autocomplete="current-password">
 
@@ -53,7 +53,7 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('type') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="text" type="type"
+                                    <input id="text" type="type" value="{{ $app->type }}"
                                         class="form-control @error('type') is-invalid @enderror" name="type"
                                         value="{{ old('type') }}" required autocomplete="type" autofocus>
 

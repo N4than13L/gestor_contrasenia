@@ -34,3 +34,15 @@ Route::get('/apps', [AppsController::class, 'apps'])->name('apps.view');
 
 // guardar apps a db.
 Route::post('/save', [AppsController::class, 'save'])->name('save.apps');
+
+// ver contrasena de las aplicaciones.
+Route::get('/app/password/{id}', [AppsController::class, 'password'])->name('password.apps');
+
+// eliminar las apps.
+Route::get('/delete/{id}', [AppsController::class, 'delete'])->name('delete.apps');
+
+// editar las aplicaciones.
+Route::get('/app/edit/{id}', [AppsController::class, 'edit'])->name('edit.apps');
+
+// enviar los cambios de las  aplicaciones.
+Route::post('/app/update/{id}', [AppsController::class, 'update'])->name('update.apps');

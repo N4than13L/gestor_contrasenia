@@ -9,6 +9,12 @@
                         <p class="text-center">Actualizar Informacion personal</p>
                     </div>
 
+                    @if (session('message'))
+                        <div class="alert alert-success">
+                            {{ session('message') }}
+                        </div>
+                    @endif
+
                     <div class="card-body ">
                         <form method="POST" action="{{ route('update.user', ['id' => $user->id]) }}">
                             @csrf
