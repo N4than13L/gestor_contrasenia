@@ -7,8 +7,14 @@
                 <div class="card">
                     <div class="card-header">{{ __('Agregar Aplicacion') }}</div>
 
+                    <div class="alert alert-danger alert-dismissible fade show d-none" id="alert_messaje" role="alert">
+                        <div id="values"></div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
                     <div class="card-body">
-                        <form method="POST" action="{{ route('save.apps') }}">
+                        <form method="POST" id="formulario" onsubmit="return validarFormulario()"
+                            action="{{ route('save.apps') }}">
                             @csrf
 
                             {{-- name --}}
@@ -19,7 +25,8 @@
                                 <div class="col-md-6">
                                     <input id="name" type="text"
                                         class="form-control @error('name') is-invalid @enderror" name="name"
-                                        value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        value="{{ old('name') }}" autocomplete="name" autofocus>
+
 
                                     @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -37,7 +44,7 @@
                                 <div class="col-md-6">
                                     <input id="password" type="password"
                                         class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password">
+                                        autocomplete="current-password">
 
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -53,9 +60,9 @@
                                     class="col-md-4 col-form-label text-md-end">{{ __('type') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="text" type="type"
+                                    <input id="type" type="type"
                                         class="form-control @error('type') is-invalid @enderror" name="type"
-                                        value="{{ old('type') }}" required autocomplete="type" autofocus>
+                                        value="{{ old('type') }}" autocomplete="type" autofocus>
 
                                     @error('type')
                                         <span class="invalid-feedback" role="alert">
@@ -67,9 +74,11 @@
 
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-success">
-                                        <i class="fa-solid fa-floppy-disk"></i>
-                                    </button>
+                                    <div>
+                                        <input type="submit" value="Guardar" class="btn btn-success" />
+                                        {{-- <i class="fa-solid fa-floppy-disk"></i> --}}
+                                    </div>
+
                                 </div>
                             </div>
                         </form>

@@ -28,6 +28,11 @@ Route::get('/settings', [UserController::class, 'settings'])->name('settings');
 // actualizar datos de usuario en la db
 Route::post('/update/{id}', [UserController::class, 'update'])->name('update.user');
 
+// cambiar contrasena 
+Route::get('/user/password', [UserController::class, 'change'])->name('changepassword.user');
+
+Route::post('/user/updatepassword/{id}', [UserController::class, 'change_password'])->name('updatepassword.user');
+
 
 // ver formuario para agregar aplicaciones 
 Route::get('/apps', [AppsController::class, 'apps'])->name('apps.view');

@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <p class="text-center">Actualizar Informacion personal</p>
+                        <p class="text-center">Cambiar Contraseña</p>
                     </div>
 
                     @if (session('message'))
@@ -15,8 +15,14 @@
                         </div>
                     @endif
 
+                    <div class="alert alert-danger alert-dismissible fade show d-none" id="alert_messaje" role="alert">
+                        <div id="values"></div>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
                     <div class="card-body ">
-                        <form method="POST" action="{{ route('update.user', ['id' => $user->id]) }}">
+                        <form method="POST" action="{{ route('updatepassword.user', ['id' => $user->id]) }}"
+                            onsubmit="return validarContraena()">
                             @csrf
 
                             <div class="row mb-3">
@@ -72,14 +78,39 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3 text-center">
-                                <a href="{{ route('changepassword.user') }}" class="text-link">Cambiar Contraseña</a>
+                            {{-- cambiar contrasena --}}
+                            <div class="row mb-3">
+                                <label for="password"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="new-password">
+
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            {{-- confirmar contrasena --}}
+                            <div class="row mb-3">
+                                <label for="password-confirm"
+                                    class="col-md-4 col-form-label text-md-end">{{ __('Confirmar Contraseña') }}</label>
+
+                                <div class="col-md-6">
+                                    <input id="password-confirm" type="password" class="form-control" required
+                                        name="password_confirmation" autocomplete="new-password">
+                                </div>
                             </div>
 
                             <div class="row mb-0">
                                 <div class="col-md-6 offset-md-4">
                                     <button type="submit" class="btn btn-primary">
-                                        {{ __('Actualizar') }}
+                                        {{ __('Cambiar Contraseña') }}
                                     </button>
                                 </div>
                             </div>
