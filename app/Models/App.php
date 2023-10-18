@@ -13,6 +13,7 @@ class App extends Model
     public $timestamps = false;
 
     protected $fillable = [
+        'id',
         'name',
         'password',
         'type',

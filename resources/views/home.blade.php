@@ -16,6 +16,8 @@
 
                         <h3>Gestiona tu contraseña</h3>
                         <a href="{{ route('apps.view') }}" class="btn btn-info"><i class="fa-solid fa-plus"></i></a>
+
+
                         <table class="table">
                             <thead>
                                 <tr>
@@ -23,30 +25,33 @@
                                     <th scope="col">Nombre</th>
                                     <th scope="col">contraseña</th>
                                     <th scope="col">tipo</th>
-                                    <th scope="col">creador</th>
-                                    <th scope="col">Accion</th>
+                                    <th scope="col">Acción</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($app as $apps)
-                                    <tr>
-                                        <td scope="row">{{ $apps->id }}</td>
-                                        <td scope="row">{{ $apps->name }}</td>
-                                        <td scope="row"><i class="fa-solid fa-hashtag"></i> <i
-                                                class="fa-solid fa-hashtag"></i> <i class="fa-solid fa-hashtag"></i></td>
-                                        <td scope="row">{{ $apps->type }}</td>
+                                    @if (Auth::user() && Auth::user()->id == $apps->users_id)
+                                        <tr>
+                                            <td scope="row">{{ $apps->id }}</td>
+                                            <td scope="row">{{ $apps->name }}</td>
+                                            <td scope="row"><i class="fa-solid fa-hashtag"></i> <i
+                                                    class="fa-solid fa-hashtag"></i> <i class="fa-solid fa-hashtag"></i>
+                                            </td>
+                                            <td scope="row">{{ $apps->type }}</td>
 
-                                        <td scope="row">{{ $apps->users_id }}</td>
-
-                                        </td>
-                                        <td scope="row">
-                                            <a href="#" class="btn btn-warning"><i
-                                                    class="fa-solid fa-pencil"></i></a>&nbsp;
-                                            <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                            <td scope="row">
+                                                <a href="#" class="btn btn-warning"><i
+                                                        class="fa-solid fa-pencil"></i></a>&nbsp;
+                                                <a href="#" class="btn btn-danger"><i
+                                                        class="fa-solid fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                         </table>
+
+
                     </div>
                 </div>
             </div>
